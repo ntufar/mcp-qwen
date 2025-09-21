@@ -1,0 +1,62 @@
+# File Reading API Contract
+
+## Read File Contents
+
+**Endpoint**: GET /files/{path}
+**Description**: Read the contents of a file
+
+### Request
+**Path Parameters**:
+- path: string (encoded file path)
+
+**Query Parameters**:
+- encoding: string (optional, default: utf-8)
+- limit: integer (optional, maximum bytes to read, default: 10485760 (10MB))
+
+### Response
+**Status**: 200 OK
+
+**Headers**:
+- Content-Type: text/plain; charset=utf-8
+
+**Body**:
+```
+File contents as text
+```
+
+### Error Responses
+**Status**: 404 Not Found
+**Body**:
+```json
+{
+  "error": "File not found",
+  "code": "FILE_NOT_FOUND"
+}
+```
+
+**Status**: 403 Forbidden
+**Body**:
+```json
+{
+  "error": "Access denied",
+  "code": "ACCESS_DENIED"
+}
+```
+
+**Status**: 413 Payload Too Large
+**Body**:
+```json
+{
+  "error": "File too large",
+  "code": "FILE_TOO_LARGE"
+}
+```
+
+**Status**: 500 Internal Server Error
+**Body**:
+```json
+{
+  "error": "Internal server error",
+  "code": "INTERNAL_ERROR"
+}
+```

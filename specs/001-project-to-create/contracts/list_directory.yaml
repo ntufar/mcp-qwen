@@ -1,0 +1,85 @@
+# File Browsing API Contract
+
+## List Directory Contents
+
+**Endpoint**: GET /directories/{path}
+**Description**: List the contents of a directory
+
+### Request
+**Path Parameters**:
+- path: string (encoded directory path)
+
+**Query Parameters**:
+- recursive: boolean (optional, default: false)
+- limit: integer (optional, default: 100)
+- offset: integer (optional, default: 0)
+
+### Response
+**Status**: 200 OK
+
+**Body**:
+```json
+{
+  "directory": {
+    "id": "string",
+    "name": "string",
+    "path": "string",
+    "size": 0,
+    "modified_at": "2025-01-01T00:00:00Z",
+    "created_at": "2025-01-01T00:00:00Z",
+    "permissions": "string"
+  },
+  "contents": [
+    {
+      "type": "file",
+      "id": "string",
+      "name": "string",
+      "path": "string",
+      "size": 0,
+      "modified_at": "2025-01-01T00:00:00Z",
+      "created_at": "2025-01-01T00:00:00Z",
+      "permissions": "string"
+    },
+    {
+      "type": "directory",
+      "id": "string",
+      "name": "string",
+      "path": "string",
+      "size": 0,
+      "modified_at": "2025-01-01T00:00:00Z",
+      "created_at": "2025-01-01T00:00:00Z",
+      "permissions": "string"
+    }
+  ],
+  "total_count": 0,
+  "has_more": false
+}
+```
+
+### Error Responses
+**Status**: 404 Not Found
+**Body**:
+```json
+{
+  "error": "Directory not found",
+  "code": "DIRECTORY_NOT_FOUND"
+}
+```
+
+**Status**: 403 Forbidden
+**Body**:
+```json
+{
+  "error": "Access denied",
+  "code": "ACCESS_DENIED"
+}
+```
+
+**Status**: 500 Internal Server Error
+**Body**:
+```json
+{
+  "error": "Internal server error",
+  "code": "INTERNAL_ERROR"
+}
+```
