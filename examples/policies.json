@@ -1,0 +1,60 @@
+[
+  {
+    "name": "llm-read-policy",
+    "description": "Allow LLMs to read files in allowed directories",
+    "resources": [
+      "/tmp/mcp_test/*",
+      "/home/user/documents/*",
+      "/Users/*/Documents/*"
+    ],
+    "principals": [
+      "llm-*",
+      "gemini-*",
+      "chatgpt-*"
+    ],
+    "actions": [
+      "read",
+      "list"
+    ],
+    "conditions": {}
+  },
+  {
+    "name": "admin-full-access",
+    "description": "Allow administrators full access to all files",
+    "resources": [
+      "*"
+    ],
+    "principals": [
+      "admin",
+      "root"
+    ],
+    "actions": [
+      "read",
+      "write",
+      "delete",
+      "list"
+    ],
+    "conditions": {}
+  },
+  {
+    "name": "restricted-code-policy",
+    "description": "Restrict access to sensitive code directories",
+    "resources": [
+      "/etc/*",
+      "/usr/*",
+      "/System/*",
+      "/Windows/*"
+    ],
+    "principals": [
+      "*"
+    ],
+    "actions": [
+      "read",
+      "write",
+      "delete",
+      "list"
+    ],
+    "effect": "deny",
+    "conditions": {}
+  }
+]

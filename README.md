@@ -73,6 +73,26 @@ The MCP Server is a security-focused server application that enables LLMs to saf
 
 2. The server will be available at `http://localhost:8000`
 
+## Examples
+
+The repository includes examples showing how to integrate with the MCP Server:
+
+```bash
+# Explore the examples directory
+ls examples/
+
+# Run the Python client example
+python examples/mcp_client.py
+
+# Run the Gemini integration example (requires API keys)
+python examples/gemini_integration.py
+
+# Run the curl examples
+./examples/usage_examples.sh
+```
+
+See [examples/README.md](examples/README.md) for more details.
+
 ## API Usage
 
 ### List Directory Contents
@@ -105,6 +125,7 @@ For more details, see the [Security Documentation](docs/security.md).
 
 - [API Documentation](docs/api.md)
 - [Security Documentation](docs/security.md)
+- [Examples](examples/README.md)
 
 ## Testing
 

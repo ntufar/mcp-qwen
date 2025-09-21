@@ -1,0 +1,16 @@
+{
+  "name": "Example Project",
+  "version": "1.0.0",
+  "description": "An example project for testing the MCP Server",
+  "author": "MCP Server Team",
+  "license": "MIT",
+  "dependencies": {
+    "python": "^3.11",
+    "fastapi": "^0.104.1",
+    "uvicorn": "^0.23.2"
+  },
+  "scripts": {
+    "start": "python main.py",
+    "test": "python -m pytest tests/"
+  }
+}

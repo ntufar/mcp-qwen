@@ -1,0 +1,10 @@
+This is an example text file for testing the MCP Server.
+
+It contains some sample content that can be read by LLMs through the API.
+
+Features:
+- Simple text content
+- Multiple lines
+- Various characters and symbols
+
+This file is used in the examples to demonstrate file reading capabilities.
