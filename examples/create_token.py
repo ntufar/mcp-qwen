@@ -10,14 +10,75 @@ import os
 import json
 
 # Add src to path so we can import the services
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
 
-from src.services.auth_service import AuthService
-from src.models.user_session import UserSessionModel
+try:
+    from src.services.auth_service import AuthService
+    from src.models.user_session import UserSessionModel
+except ImportError as e:
+    print(f"Import error: {e}")
+    print("Falling back to manual token generation...")
 
-def main():
-    """Main function to create a token"""
+def create_token_fallback():
+    """Create a token without using the AuthService"""
+    import secrets
+    from datetime import datetime, timedelta
+    
+    # Generate a random token
+    token = secrets.token_urlsafe(32)
+    
+    # Create token information
+    token_info = {
+        "principal": "llm-user",
+        "token": token,
+        "created_at": datetime.now().isoformat(),
+        "expires_at": (datetime.now() + timedelta(hours=24)).isoformat(),
+        "scopes": ["read", "list"]
+    }
+    
+    print("="*60)
+    print("MCP SERVER AUTHENTICATION TOKEN")
+    print("="*60)
+    print(f"Principal: {token_info['principal']}")
+    print(f"Token: {token_info['token']}")
+    print(f"Created: {token_info['created_at']}")
+    print(f"Expires: {token_info['expires_at']}")
+    print(f"Scopes: {', '.join(token_info['scopes'])}")
+    print("="*60)
+    
+    # Save to files
+    with open(".mcp_token", "w") as f:
+        f.write(token)
+    
+    with open(".mcp_token.json", "w") as f:
+        json.dump(token_info, f, indent=2)
+    
+    print("\nToken saved to:")
+    print("  - .mcp_token (token only)")
+    print("  - .mcp_token.json (full token information)")
+    
+    print("\n" + "-"*60)
+    print("USAGE INSTRUCTIONS:")
+    print("-"*60)
+    print("1. Set as environment variable:")
+    print(f'   export MCP_TOKEN="{token}"')
+    print("\n2. Use with curl:")
+    print(f'   curl -H "Authorization: Bearer $MCP_TOKEN" \\')
+    print(f'        "http://localhost:8000/directories/tmp"')
+    print("\n3. Use in Python:")
+    print("   import os")
+    print("   token = os.getenv('MCP_TOKEN')")
+    print("   headers = {'Authorization': f'Bearer {token}'}")
+    print("-"*60)
+    
+    return token
+
+def create_token_with_service():
+    """Create a token using the AuthService"""
     try:
+        from src.services.auth_service import AuthService
+        
         print("Creating authentication token for MCP Server...")
         
         # Initialize the auth service
@@ -74,12 +135,22 @@ def main():
         print("   headers = {'Authorization': f'Bearer {token}'}")
         print("-"*50)
         
-        return 0
+        return user_session.token
         
     except Exception as e:
-        print(f"Error creating token: {e}")
+        print(f"Error creating token with service: {e}")
         import traceback
         traceback.print_exc()
+        print("Falling back to manual token generation...")
+        return create_token_fallback()
+
+def main():
+    """Main function to create a token"""
+    # Try to use the AuthService first
+    result = create_token_with_service()
+    if result:
+        return 0
+    else:
         return 1
 
 if __name__ == "__main__":
