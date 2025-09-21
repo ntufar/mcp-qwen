@@ -1,0 +1,10 @@
+{
+  "principal": "llm-user",
+  "token": "TmbMAt9KJ6HEJuGfFO1HD6kmCS3UUMJQ-Y5r24Z0sPk",
+  "created_at": "2025-09-21T21:59:18.417667",
+  "expires_at": "2025-09-22T21:59:18.417673",
+  "scopes": [
+    "read",
+    "list"
+  ]
+}
