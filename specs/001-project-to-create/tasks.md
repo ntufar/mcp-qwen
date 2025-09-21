@@ -43,57 +43,57 @@
 - Paths shown below assume single project - adjust based on plan.md structure
 
 ## Phase 3.1: Setup
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize Python project with FastAPI dependencies
-- [ ] T003 [P] Configure linting and formatting tools (black, flake8, isort)
-- [ ] T004 [P] Create requirements.txt with FastAPI, Pydantic, pytest, and other dependencies
-- [ ] T005 [P] Set up project configuration files (.env.example, config.py)
+- [x] T001 Create project structure per implementation plan
+- [x] T002 Initialize Python project with FastAPI dependencies
+- [x] T003 [P] Configure linting and formatting tools (black, flake8, isort)
+- [x] T004 [P] Create requirements.txt with FastAPI, Pydantic, pytest, and other dependencies
+- [x] T005 [P] Set up project configuration files (.env.example, config.py)
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
-- [ ] T006 [P] Contract test GET /directories/{path} in tests/contract/test_list_directory.py
-- [ ] T007 [P] Contract test GET /files/{path} in tests/contract/test_read_file.py
-- [ ] T008 [P] Integration test directory listing in tests/integration/test_directory_listing.py
-- [ ] T009 [P] Integration test file reading in tests/integration/test_file_reading.py
-- [ ] T010 [P] Integration test access control in tests/integration/test_access_control.py
-- [ ] T011 [P] Integration test authentication in tests/integration/test_authentication.py
+- [x] T006 [P] Contract test GET /directories/{path} in tests/contract/test_list_directory.py
+- [x] T007 [P] Contract test GET /files/{path} in tests/contract/test_read_file.py
+- [x] T008 [P] Integration test directory listing in tests/integration/test_directory_listing.py
+- [x] T009 [P] Integration test file reading in tests/integration/test_file_reading.py
+- [x] T010 [P] Integration test access control in tests/integration/test_access_control.py
+- [x] T011 [P] Integration test authentication in tests/integration/test_authentication.py
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
-- [ ] T012 [P] File model in src/models/file.py
-- [ ] T013 [P] Directory model in src/models/directory.py
-- [ ] T014 [P] AccessPolicy model in src/models/access_policy.py
-- [ ] T015 [P] AuditLog model in src/models/audit_log.py
-- [ ] T016 [P] UserSession model in src/models/user_session.py
-- [ ] T017 [P] FileService in src/services/file_service.py
-- [ ] T018 [P] DirectoryService in src/services/directory_service.py
-- [ ] T019 [P] AccessControlService in src/services/access_control_service.py
-- [ ] T020 [P] AuditService in src/services/audit_service.py
-- [ ] T021 [P] AuthService in src/services/auth_service.py
-- [ ] T022 GET /directories/{path} endpoint in src/api/directories.py
-- [ ] T023 GET /files/{path} endpoint in src/api/files.py
-- [ ] T024 Input validation for path parameters
-- [ ] T025 Error handling and logging
+- [x] T012 [P] File model in src/models/file.py
+- [x] T013 [P] Directory model in src/models/directory.py
+- [x] T014 [P] AccessPolicy model in src/models/access_policy.py
+- [x] T015 [P] AuditLog model in src/models/audit_log.py
+- [x] T016 [P] UserSession model in src/models/user_session.py
+- [x] T017 [P] FileService in src/services/file_service.py
+- [x] T018 [P] DirectoryService in src/services/directory_service.py
+- [x] T019 [P] AccessControlService in src/services/access_control_service.py
+- [x] T020 [P] AuditService in src/services/audit_service.py
+- [x] T021 [P] AuthService in src/services/auth_service.py
+- [x] T022 GET /directories/{path} endpoint in src/api/directories.py
+- [x] T023 GET /files/{path} endpoint in src/api/files.py
+- [x] T024 Input validation for path parameters
+- [x] T025 Error handling and logging
 
 ## Phase 3.4: Integration
-- [ ] T026 Configure OAuth2 authentication middleware
-- [ ] T027 Implement access control middleware
-- [ ] T028 Set up audit logging middleware
-- [ ] T029 Configure file system access limits
-- [ ] T030 Implement caching for directory listings
+- [x] T026 Configure OAuth2 authentication middleware
+- [x] T027 Implement access control middleware
+- [x] T028 Set up audit logging middleware
+- [x] T029 Configure file system access limits
+- [x] T030 Implement caching for directory listings
 
 ## Phase 3.5: Polish
-- [ ] T031 [P] Unit tests for File model in tests/unit/test_file_model.py
-- [ ] T032 [P] Unit tests for Directory model in tests/unit/test_directory_model.py
-- [ ] T033 [P] Unit tests for AccessPolicy model in tests/unit/test_access_policy_model.py
-- [ ] T034 [P] Unit tests for AuditLog model in tests/unit/test_audit_log_model.py
-- [ ] T035 [P] Unit tests for UserSession model in tests/unit/test_user_session_model.py
-- [ ] T036 [P] Unit tests for FileService in tests/unit/test_file_service.py
-- [ ] T037 [P] Unit tests for DirectoryService in tests/unit/test_directory_service.py
-- [ ] T038 Performance tests (<100ms response time)
-- [ ] T039 [P] Update docs/api.md with endpoint documentation
-- [ ] T040 [P] Update docs/security.md with security implementation details
-- [ ] T041 Update README.md with project overview and usage instructions
-- [ ] T042 Run manual-testing.md to validate quickstart guide
+- [x] T031 [P] Unit tests for File model in tests/unit/test_file_model.py
+- [x] T032 [P] Unit tests for Directory model in tests/unit/test_directory_model.py
+- [x] T033 [P] Unit tests for AccessPolicy model in tests/unit/test_access_policy_model.py
+- [x] T034 [P] Unit tests for AuditLog model in tests/unit/test_audit_log_model.py
+- [x] T035 [P] Unit tests for UserSession model in tests/unit/test_user_session_model.py
+- [x] T036 [P] Unit tests for FileService in tests/unit/test_file_service.py
+- [x] T037 [P] Unit tests for DirectoryService in tests/unit/test_directory_service.py
+- [x] T038 Performance tests (<100ms response time)
+- [x] T039 [P] Update docs/api.md with endpoint documentation
+- [x] T040 [P] Update docs/security.md with security implementation details
+- [x] T041 Update README.md with project overview and usage instructions
+- [x] T042 Run manual-testing.md to validate quickstart guide
 
 ## Dependencies
 - Tests (T006-T011) before implementation (T012-T025)
